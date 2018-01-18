@@ -2,7 +2,7 @@
 
 from distutils.core import setup
 
-setup( name=' pyAwsLambdaContinuousDeliveryUnittest'
+setup( name='pyAwsLambdaContinuousDeliveryUnittest'
      , version = '0.0.1'
      , description = 'pyAwsLambdaContinuousDeliveryUnittest'
      , author = 'Janos Potecki'
