@@ -56,10 +56,10 @@ def getTestFiles(config: dict) -> Set[str]:
     return set(map(lambda x: os.path.join(path, x), testfiles))
 
 
-def getFolderContent(testfolder: str) -> Set[str]:
+def getFolderContent(testfolder: str, filetype = ".py") -> Set[str]:
     path = os.path.join(rootdir, testfolder)
     files = os.listdir(path)
-    files = filter(lambda x: x.endswith(".py"), files)
+    files = filter(lambda x: x.endswith(filetype), files)
     files = map(lambda x: os.path.join(path, x), files)
     return set(files)
 
@@ -73,6 +73,19 @@ def checkTestFiles(config: dict, testfolder: str):
         raise Exception("List of Testfiles is empty")
     if not testFiles.issubset(allFiles):
         raise Exception("Files missing: {}".format(testFiles.difference(allFiles)))
+    return
+
+
+def hasRequirementsTxt(testfolder: str) -> bool:
+    files = getFolderContent(testfolder, ".txt")
+    return "requirements.txt" in files
+
+
+def installRequirements(testfolder: str):
+    if not hasRequirementsTxt(testfolder): return
+    filepath = os.path.join(rootdir, testfolder)
+    filepath = os.path.join(filepath, "requirements.txt")
+    subprocess.call(["pip3", "install", "-r", filepath])
     return
 
 
@@ -97,6 +110,8 @@ def runTests():
         checkTestFiles(config, testfolder)
     else:
         files = getFolderContent(testfolder)
+
+    installRequirements(testfolder)
     for t in files:
         r = runTest(t)
         if r != 0:
