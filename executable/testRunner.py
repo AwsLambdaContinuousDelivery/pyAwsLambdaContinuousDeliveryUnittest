@@ -87,11 +87,13 @@ def installRequirements(testfolder: str):
 
 def runTest(testfile: str) -> int:
     exec_cmd = " ".join(["python3", testfile])
-    try:
-        subprocess.check_output(exec_cmd, shell = True)
-    except:
-        return 1
-    return 0
+    test = subprocess.Popen(exec_cmd, stdout=subprocess.PIPE, shell=True)
+    (out, err) = test.communicate()
+    if out is not None:
+        print(out.decode("utf-8"))
+    if err is not None:
+        print(err.decode("utf-8"))
+    return test.returncode
 
 def runTests():
     config = loadConfig()
