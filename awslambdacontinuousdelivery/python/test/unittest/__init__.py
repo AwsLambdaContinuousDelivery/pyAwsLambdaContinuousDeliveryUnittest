@@ -18,6 +18,6 @@ def getUnittest( template: Template
   unittestBuilderRef = template.add_resource(unittestBuilder)
   action = getDockerBuildAction(unittestBuilder, [sourcecode])
   return Stages( "UnittestStage"
-               , Name = "Build"
+               , Name = "Unittests"
                , Actions = [ action ]
                )
