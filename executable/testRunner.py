@@ -110,9 +110,8 @@ def runTests():
     installRequirements(testfolder)
     for t in files:
         r = runTest(t)
-        if r != 0:
-            return 1
-        return 0
+        if r != 0: return 1
+    return 0
 
 if __name__ == "__main__":
     runTests()
