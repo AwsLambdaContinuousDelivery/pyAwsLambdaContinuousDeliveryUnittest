@@ -87,8 +87,7 @@ def getUnittestBuildSpec() -> List[str]:
          , "  pre_build:"
          , "    commands:"
          , "      - pip3 install -r requirements.txt"
-         , "      - wget https://raw.githubusercontent.com/AwsLambdaContinuousDelivery/pyAwsLambdaContinuousUnittest/executable/testRunner.py"
-         , "  build:"
+         , "      - wget https://raw.githubusercontent.com/AwsLambdaContinuousDelivery/pyAwsLambdaContinuousDeliveryUnittest/master/executable/testRunner.py"         , "  build:"
          , "    commands:"
          , "      - python3 testRunner.py"
          ]
