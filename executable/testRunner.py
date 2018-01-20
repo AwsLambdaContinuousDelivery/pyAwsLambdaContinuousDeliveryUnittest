@@ -1,15 +1,11 @@
-import os, sys, boto3
-import argparse
+import os, sys
 import subprocess
 import yaml
 
-
 from typing import List, Set
-
 
 rootdir = os.path.dirname(__file__)
 configfile = os.path.join(rootdir, "config/config.yaml")
-
 
 UnittestFieldName = "Unittests"
 UnittestFolderName = "Folder"
