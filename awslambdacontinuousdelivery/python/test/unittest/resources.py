@@ -87,6 +87,7 @@ def getUnittestBuildSpec() -> List[str]:
          , "  install:"
          , "    commands:"
          , "      - pip3 install moto"
+         , "      - pip3 install boto3"           
          , "      - pip3 install troposphere"
          , "      - pip3 install awacs"           
          , "      - pip3 install -r requirements.txt"
