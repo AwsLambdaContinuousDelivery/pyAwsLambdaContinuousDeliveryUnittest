@@ -86,6 +86,7 @@ def getUnittestBuildSpec() -> List[str]:
          , "phases:"
          , "  install:"
          , "    commands:"
+         , "      - apk add --no-cache curl python pkgconfig python3-dev openssl-dev libffi-dev musl-dev make gcc"
          , "      - pip3 install moto"
          , "      - pip3 install boto3"           
          , "      - pip3 install troposphere"
