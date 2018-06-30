@@ -9,7 +9,7 @@ from troposphere import Template, Ref, Sub, Join
 from troposphere.codebuild import ( Project
   , Environment, Source, Artifacts )
 from troposphere.codepipeline import ( InputArtifacts
-  , Actions, Stages, ActionTypeID, OutputArtifacts )
+  , Actions, Stages, ActionTypeId, OutputArtifacts )
 from troposphere.iam import Role, Policy
 
 from typing import List, Tuple
@@ -45,7 +45,7 @@ def getDockerBuildAction( buildRef
   '''
   number = str(number)
   inputArts  = map(lambda x: InputArtifacts( Name = x ), inputs)
-  actionId = ActionTypeID( Category = "Build"
+  actionId = ActionTypeId( Category = "Build"
                          , Owner = "AWS"
                          , Version = "1"
                          , Provider = "CodeBuild"
